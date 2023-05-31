@@ -218,7 +218,7 @@ def plot_trents(df, list_features_group, var_count, var_sum):
                         title_x=0.5,
                         hoverlabel=dict(bgcolor="#f2f2f2", font_size=13, font_family="Lato, sans-serif")
                         )
-        fig.show()
+        fig.show(width=800, height=500)
 
         # Employees by ValorTotal an categoria
         fig = px.bar(df.groupby(list_features_group)[var_sum].sum().reset_index(), x=list_features_group[0], y=var_sum, color= list_features_group[1])
@@ -231,7 +231,7 @@ def plot_trents(df, list_features_group, var_count, var_sum):
                         hoverlabel=dict(bgcolor="#f2f2f2", font_size=13, font_family="Lato, sans-serif")
                         )
 
-        fig.show()
+        fig.show(width=800, height=500)
     if len(list_features_group) == 3:
         nun = df[list_features_group[0]].unique()
         num_facet_col = np.where(len(nun) <= 3, 0, np.where((len(nun) <=5) & (len(nun) >3), 2, 3))
@@ -248,7 +248,7 @@ def plot_trents(df, list_features_group, var_count, var_sum):
                         title_x=0.5,
                         hoverlabel=dict(bgcolor="#f2f2f2", font_size=13, font_family="Lato, sans-serif")
                         )
-        fig.show()
+        fig.show(width=800, height=500)
 
 
         df_plot = df.groupby(list_features_group)[var_sum].sum().reset_index()
@@ -264,7 +264,7 @@ def plot_trents(df, list_features_group, var_count, var_sum):
                         title_x=0.5,
                         hoverlabel=dict(bgcolor="#f2f2f2", font_size=13, font_family="Lato, sans-serif")
                         )
-        fig.show()
+        fig.show(width=800, height=500)
 
 def filter_Category_month(df, gender, category, months_list, contain_category = True):
     '''
@@ -304,7 +304,7 @@ def filter_Category_month(df, gender, category, months_list, contain_category = 
             df_group_plot = df_filter_gender.groupby(['Categoria', 'Produto'])['count'].sum().reset_index()
             fig = px.bar(df_group_plot, x='Categoria', y='count', color= 'Produto')
             fig.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'}, template="plotly_dark")
-            fig.show()
+            fig.show(width=800, height=500)
         else:
 
             df_category = df_filter_gender[df_filter_gender['Categoria'] == category]
@@ -319,7 +319,7 @@ def filter_Category_month(df, gender, category, months_list, contain_category = 
             df_group_plot = df_filter_gender.groupby(['Categoria', 'Produto'])['count'].sum().reset_index()
             fig = px.bar(df_group_plot, x='Categoria', y='count', color= 'Produto')
             fig.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'}, template="plotly_dark")
-            fig.show()
+            fig.show(width=800, height=500)
             
     return df_filter_gender, df_empregado
 
@@ -375,6 +375,6 @@ def segments_categoria_gender(df, seg):
                     title_x=0.5,
                     hoverlabel=dict(bgcolor="#f2f2f2", font_size=13, font_family="Lato, sans-serif"),
                     showlegend=False)
-    fig.show()
+    fig.show(width=800, height=500)
 
 
